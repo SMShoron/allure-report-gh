@@ -92,13 +92,3 @@ jobs:
               }
             ]
           }
-
-    - name: Get GitHub Pages URL
-      id: get_pages_url
-      run: echo "::set-output name=pages_url::${{ github.event.repository.html_url }}/gh-pages"
-
-    - name: Send Slack Notification
-      uses: rtCamp/action-slack-notify@v2
-      with:
-        status: success
-        text: "Deployment to GitHub Pages was successful! Pages URL: ${{ steps.get_pages_url.outputs.pages_url }}"
