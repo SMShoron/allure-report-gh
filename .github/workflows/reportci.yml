@@ -69,7 +69,17 @@ jobs:
         PUBLISH_BRANCH: gh-pages
         PUBLISH_DIR: allure-history
 
-    - name: slack-send data of triggered Github Action
+    - name: Post to a Slack channel
+      id: slack
       uses: slackapi/slack-github-action@v1.24.0
+      with:
+        # Slack channel id, channel name, or user id to post message.
+        # See also: https://api.slack.com/methods/chat.postMessage#channels
+        # You can pass in multiple channels to post to by providing a comma-delimited list of channel IDs.
+        channel-id: 'C05T1799KT7'
+        # For posting a simple plain text message
+        slack-message: "GitHub build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
       env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+
