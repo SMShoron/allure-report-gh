@@ -71,24 +71,23 @@ jobs:
         PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PUBLISH_BRANCH: gh-pages
         PUBLISH_DIR: allure-history
+
+    - name: Get GitHub Pages URL
+      id: get_pages_url
+      run: echo "::set-output name=pages_url::${{ github.event.repository.html_url }}/pages"
+
+    - name: Send Slack Notification
+      uses: rtCamp/action-slack-notify@v2
       with:
         channel-id: 'C05T1799KT7'
         status: success
-        fields: |
-          {
-            "GitHub Pages": "${{ github.event.repository.html_url }}/pages"
-          }
+        text: "Deployment to GitHub Pages was successful! Pages URL: ${{ steps.get_pages_url.outputs.pages_url }}"
 
     - name: Post to a Slack channel
       id: slack
       uses: slackapi/slack-github-action@v1.24.0
       with:
         channel-id: 'C05T1799KT7'
-        status: success
-        fields: |
-            {
-              "GitHub Pages": "${{ github.event.repository.html_url }}/pages"
-            }
         # For posting a rich message using Block Kit
         payload: |
           {
