@@ -71,6 +71,13 @@ jobs:
         PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PUBLISH_BRANCH: gh-pages
         PUBLISH_DIR: allure-history
+      with:
+        channel-id: 'C05T1799KT7'
+        status: success
+        fields: |
+          {
+            "GitHub Pages": "${{ github.event.repository.html_url }}/pages"
+          }
 
     - name: Post to a Slack channel
       id: slack
