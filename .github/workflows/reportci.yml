@@ -82,20 +82,20 @@ jobs:
         payload: |
           {
             "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
-            "blocks": [
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "Build Done"
-                }
-              }
-            ]
+#            "blocks": [
+#              {
+#                "type": "section",
+#                "text": {
+#                  "type": "mrkdwn",
+#                  "text": "Build Done"
+#                }
+#              }
+#            ]
           }
 
     - name: Get GitHub Pages URL
       id: get_pages_url
-      run: echo "::set-output name=pages_url::${{ github.event.repository.html_url }}/pages"
+      run: echo "::set-output name=pages_url::${{ github.event.repository.html_url }}/gh-pages"
 
     - name: Send Slack Notification
       uses: rtCamp/action-slack-notify@v2
