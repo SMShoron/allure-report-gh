@@ -68,3 +68,6 @@ jobs:
         PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PUBLISH_BRANCH: gh-pages
         PUBLISH_DIR: allure-history
+
+    - name: slack-send
+      uses: slackapi/slack-github-action@v1.24.0
