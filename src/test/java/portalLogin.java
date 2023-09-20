@@ -3,7 +3,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
 
-public class PortalLogin {
+public class portalLogin {
     @Test
     public void browserSetup(){
 
@@ -19,6 +19,8 @@ public class PortalLogin {
         driver.findElement(By.id("txt-username")).sendKeys("John Doe");
         driver.findElement(By.id("txt-password")).sendKeys("ThisIsNotAPassword");
         driver.findElement(By.id("btn-login")).click();
+
+        driver.close();
     }
 }
 
