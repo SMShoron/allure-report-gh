@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Wed Sep 20 09:32:51 GMT 2023","Wed Sep 20 09:32:58 GMT 2023","6492","Default Suite","allure-report-gh","PortalLogin","PortalLogin","browserSetup","browserSetup",""
